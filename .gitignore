@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.ipynb_checkpoints/
+*.ply
+*.db
+*.bin
+*.log
+/data/frames/
+/data/outputs/
+!/data/outputs/.gitkeep
+!/data/frames/.gitkeep

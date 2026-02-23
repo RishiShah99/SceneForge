@@ -1,0 +1,18 @@
+project:
+  name: SceneForge
+  version: 0.1.0
+
+video:
+  target_fps: 10
+  max_frames: null
+
+quality:
+  blur_method: laplacian_variance
+  orb_nfeatures: 1000
+  blur_warn_threshold: 80.0
+  texture_warn_threshold: 120
+
+paths:
+  raw_videos: data/raw_videos
+  frames: data/frames
+  outputs: data/outputs
