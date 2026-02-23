@@ -3,11 +3,27 @@ __pycache__/
 .venv/
 .env
 .ipynb_checkpoints/
+
+# Also include the docs folder
+docs/
+/project_overview2.md
+
+# Large binary outputs
 *.ply
 *.db
 *.bin
 *.log
+
+# Generated data (too large for git)
 /data/frames/
 /data/outputs/
-!/data/outputs/.gitkeep
+/data/raw_videos/
 !/data/frames/.gitkeep
+!/data/outputs/.gitkeep
+!/data/raw_videos/.gitkeep
+
+# COLMAP binary (downloaded, not source)
+/tools/colmap/
+
+# VS Code
+.vscode/
