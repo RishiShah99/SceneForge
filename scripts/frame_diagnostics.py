@@ -1,29 +1,31 @@
 import argparse
 import json
 from pathlib import Path
-
 import cv2
 import matplotlib.pyplot as plt
 import pandas as pd
 
-
+# This function computes the variance of the Laplacian of the image, which is a common method for estimating blur.  
 def laplacian_variance(gray):
     return float(cv2.Laplacian(gray, cv2.CV_64F).var())
 
-
+# This function uses ORB (Oriented FAST and Rotated BRIEF) to detect keypoints in the image
 def orb_feature_count(gray):
     orb = cv2.ORB_create(nfeatures=1000)
     kps = orb.detect(gray, None)
     return 0 if kps is None else len(kps)
 
-
+# This function runs diagnostics on a directory of frames, computing blur and texture metrics, saving results to CSV and JSON
 def run(frames_dir: Path, out_dir: Path):
+    # Create output directory if it doesn't exist
     out_dir.mkdir(parents=True, exist_ok=True)
     rows = []
+    # Find all image files in the frames directory
     frame_paths = sorted(frames_dir.glob("*.jpg")) + sorted(frames_dir.glob("*.png"))
     if not frame_paths:
         raise RuntimeError(f"No frames found in {frames_dir}")
 
+    # Process each frame: read the image, convert to grayscale, compute blur and ORB features, and store results in rows
     for fp in frame_paths:
         img = cv2.imread(str(fp))
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
