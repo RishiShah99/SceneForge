@@ -2,17 +2,31 @@ project:
   name: SceneForge
   version: 0.1.0
 
+# We want the target FPS to be at 10 for better reconstruction quality, but you can set it higher if you want faster processing at the cost of quality. 
 video:
-  target_fps: 10
-  max_frames: null
+  target_fps: 10        
+  # Max frames are set to null meaning no limit
+  max_frames: null      
+
+colmap:
+  exe: tools/colmap/bin/colmap.exe  
+  # The machine I was building this on has no GPU
+  use_gpu: false                    
+  # Sequential matching assumes that consecutive frames are more likely to match, which is often the case in videos. 
+  matcher: sequential                
+  # We use simple radial because it is a good balance between simplicity and accuracy for many scenes.
+  camera_model: SIMPLE_RADIAL        
 
 quality:
+  # Laplacian variance is a common method for estimating blur. A lower variance indicates more blur. 
   blur_method: laplacian_variance
   orb_nfeatures: 1000
-  blur_warn_threshold: 80.0
-  texture_warn_threshold: 120
+  blur_warn_threshold: 80.0          
+  texture_warn_threshold: 120        
+  motion_warn_threshold: 15.0        
 
 paths:
   raw_videos: data/raw_videos
   frames: data/frames
   outputs: data/outputs
+  colmap_projects: data/outputs/colmap
