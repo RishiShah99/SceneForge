@@ -1,6 +1,16 @@
+# Core
 numpy
 opencv-python
 matplotlib
 open3d
 pyyaml
 pandas
+tqdm
+
+# Data download
+yt-dlp
+
+# Stage 2 (depth)
+# transformers   # uncomment when starting Stage 2 (Depth Anything v2)
+# torch          # uncomment when starting Stage 2
+# torchvision    # uncomment when starting Stage 2
