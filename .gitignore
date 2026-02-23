@@ -6,7 +6,7 @@ __pycache__/
 
 # Also include the docs folder
 docs/
-/project_overview2.md
+/projectoverview2.md
 
 # Large binary outputs
 *.ply
